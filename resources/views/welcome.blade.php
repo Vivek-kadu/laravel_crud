@@ -27,7 +27,16 @@
     </head>
     <body class="antialiased">
         <div class="relative flex items-top justify-center  min-h-screen sm:items-center py-4 sm:pt-0">
-        
+        @if (Route::has('login') && Auth::check())
+                <div class="top-right links">
+                    <a href="{{ url('/home') }}">Dashboard</a>
+                </div>
+            @elseif (Route::has('login') && !Auth::check())
+                <div class="top-right links">
+                    <a href="{{ url('/login') }}">Login</a>
+                    <a href="{{ url('/register') }}">Register</a>
+                </div>
+            @endif
            <table>
                 <tr>
                     <th>ID</th>
